@@ -1,12 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabs - Myversion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .menuBar {
+            width: 100%;
+            height: 50px;
+            border: 1px solid black;
+            background-color: #F1F1F1;
+        }
+
+        .menuContent {
+            display: inline-block;
+            width: 100px;
+            height: 48px;
+            padding: 0px 20px;
+            line-height: 50px;
+            font-weight: 500;
+        }
+
+        .menuContent:hover {
+            background-color: #e6d8d8;
+        }
+
+        .MsgBox {
+            width: 100%;
+            height: 200px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .row {
+            padding-left: 20px;
+        }
+
+        .selected {
+            background-color: #c2bbbb;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="menuBar">
+        <div class="menuContent selected">London</div>
+        <div class="menuContent">Paris</div>
+        <div class="menuContent">Tokyo</div>
+    </div>
+    <div class="MsgBox">
+        <div class="row">London</div>
+        <div class="row">London is the capital city of England.</div>
+    </div>
+    <script>
+        const menuContent = document.querySelectorAll('.menuContent');
+        const row = document.querySelectorAll('.row');
+        menuContent.forEach(function (ele, index) {
+            ele.addEventListener('click', function () {
+                if (index == 0) {
+                    row[0].innerText = "London";
+                    row[1].innerHTML = "London is the capital city of England.";
+                } else if (index == 1) {
+                    row[0].innerHTML = "Paris";
+                    row[1].innerHTML = "Paris is the capital of France.";
+                } else if (index == 2) {
+                    row[0].innerHTML = "Tokyo";
+                    row[1].innerHTML = "Tokyo is the capital of Japan.";
+                }
+            });
+
+        });
+        menuContent.forEach(function (ele, index) {
+            ele.addEventListener('click', function (e) {
+                menuContent.forEach(function (ele, index) {
+                    if (e.target == ele) {
+                        ele.classList.add('selected');
+                    } else {
+                        ele.classList.remove('selected');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
