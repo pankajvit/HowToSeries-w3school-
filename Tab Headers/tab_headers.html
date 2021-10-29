@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyVersion - Tab Headers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .red {
+            background-color: #F44336;
+            color: white;
+        }
+
+        .green {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .blue {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .orange {
+            background-color: #FF5722;
+            color: white;
+        }
+
+        .projectWindow {
+            width: 100%;
+            height: 400px;
+        }
+
+        .output {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu {
+            width: 100%;
+        }
+
+        .nav {
+            display: inline-block;
+            margin-left: -4px;
+            font-size: 1.5em;
+            height: 50px;
+            width: 25%;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .cityName {
+            font-size: 3em;
+        }
+
+        .cityDes {
+            font-size: 1em;
+        }
+
+        .gray {
+            background-color: #DDDDDD;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="projectWindow">
+        <div class="output red">
+            <div class="cityName">London</div>
+            <div class="cityDes">London is the capital city of England.</div>
+        </div>
+        <div class="menu">
+            <div class="nav red">London</div>
+            <div class="nav gray">Paris</div>
+            <div class="nav gray">Tokyo</div>
+            <div class="nav gray">Oslo</div>
+        </div>
+    </div>
+    <script>
+        const output = document.querySelector('.output');
+        const nav = document.querySelectorAll(".nav");
+        const cityName = document.querySelector('.cityName');
+        const cityDes = document.querySelector('.cityDes');
+        nav.forEach(function (ele, index) {
+            ele.addEventListener('click', function () {
+                if (ele.innerText == "London") {
+                    ele.classList.add('red');
+                    output.classList.add('red');
+                    nav.forEach(function (ele, index) {
+                        ele.classList.remove("green", "blue", "orange", "gray");
+                        output.classList.remove("green", "blue", "orange");
+                    });
+                    cityName.innerHTML = "London";
+                    cityDes.innerHTML = "London is the capital city of England.";
+                } else if (ele.innerText == "Paris") {
+                    ele.classList.add('green');
+                    output.classList.add('green');
+                    nav.forEach(function (ele, index) {
+                        ele.classList.remove("red", "blue", "orange", "gray");
+                        output.classList.remove("red", "blue", "orange");
+                    });
+                    cityName.innerHTML = "Paris";
+                    cityDes.innerHTML = "Paris is the capital city of France.";
+                } else if (ele.innerText == "Tokyo") {
+                    ele.classList.add('blue');
+                    output.classList.add('blue');
+                    nav.forEach(function (ele, index) {
+                        ele.classList.remove("red", "green", "orange", "gray");
+                        output.classList.remove("red", "green", "orange");
+                    });
+                    cityName.innerHTML = "Tokyo";
+                    cityDes.innerHTML = "Tokyo is the capital city of Japan.";
+                } else if (ele.innerText == "Oslo") {
+                    ele.classList.add('orange');
+                    output.classList.add('orange');
+                    nav.forEach(function (ele, index) {
+                        ele.classList.remove("red", "green", "blue", "gray");
+                        output.classList.remove("red", "green", "blue");
+                    });
+                    cityName.innerHTML = "Oslo";
+                    cityDes.innerHTML = "Oslo is the capital city of Norway.";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
